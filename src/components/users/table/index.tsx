@@ -24,7 +24,7 @@ const TableUsers = () => {
   return (
     <ul>
       {user.map((el: IProps) => (
-        <li key={el._id}>{el.name}</li>
+        <li key={el._id + el.name}>{el.name}</li>
       ))}
     </ul>
   );

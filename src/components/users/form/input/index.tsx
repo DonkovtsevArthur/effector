@@ -1,13 +1,28 @@
 import * as React from "react";
 interface IProps {
-  value: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isReq?: boolean;
+  placeholder: string;
+  value: string | number;
+  type?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const Input = ({ value, handleChange }: IProps) => {
+const Input = ({
+  value,
+  onChange,
+  type = "text",
+  placeholder = "Введите",
+  isReq = false
+}: IProps) => {
   return (
     <label>
-      Добавить пользователя
-      <input type="text" value={value} onChange={handleChange} />
+      {isReq && <span style={{ color: "red" }}>Не заполнено</span>}
+      <span>{placeholder}</span>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
     </label>
   );
 };

@@ -4,7 +4,9 @@ import { createEffect, createStore } from "~/utils/effector";
 const url = "http://localhost:5001/api/users";
 export const $currentUser = createStore([]);
 export const $isLoading = createStore(false);
-export const asyncAction = createEffect("get user").use(() => fetchAsync(url));
+export const asyncAction = createEffect("get user").use(() =>
+  fetchAsync({ url, method: "GET" })
+);
 
 asyncAction.watch(params => {
   console.log(params);
