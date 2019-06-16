@@ -27,12 +27,8 @@ export const fetchAsync = async ({ url, sendObj, method }: IAXIOS) => {
   }
 
   try {
-    const r = await axios({ url, method, data, params });
-    return r;
-  } catch ({ message, res }) {
-    return {
-      error: message,
-      message: res && res.data ? res.data.message : ""
-    };
+    return await axios({ url, method, data, params });
+  } catch (e) {
+    return e;
   }
 };
