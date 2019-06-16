@@ -4,6 +4,8 @@ export const fetchAsync = async (link: string) => {
     const r = await axios(`${link}`);
     return r;
   } catch (e) {
+    console.log("TCL: fetchAsync -> e", e);
+
     return e;
   }
 };

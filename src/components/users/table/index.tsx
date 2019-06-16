@@ -15,7 +15,10 @@ const TableUsers = () => {
   }, []);
 
   if (isLoading) {
-    return <>Загружаю</>;
+    return <div>Загружаю...</div>;
+  }
+  if (user && user.length === 0) {
+    return <>Нет данных</>;
   }
 
   return (

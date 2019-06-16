@@ -18,8 +18,8 @@ asyncAction.fail.watch(({ error, params }) => {
   console.error("watch fail", error);
 });
 
-$currentUser.on(asyncAction.done, (state: any, { result }: any) => result.data);
-
+$currentUser.on(asyncAction.done, (_, { result }: any) => result.data);
+$currentUser.on(asyncAction.fail, () => []);
 $isLoading.on(asyncAction, () => true).on(asyncAction.done, () => false);
 
 const callback = (newState: []) => console.log("currentUser", newState);
