@@ -3,6 +3,7 @@ import { rem } from "~/styles/utils";
 
 const NavStyle = styled.div`
   display: flex;
+  cursor: pointer;
   padding: ${rem("20px")} ${rem("0px")} ${rem("10px")} ${rem("20px")};
 `;
 
