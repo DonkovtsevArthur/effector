@@ -1,14 +1,23 @@
 import * as React from "react";
 import { UsersFormStyled } from "./style";
 import TableUsers from "./table";
-import AddUsers from "./form";
+import AddUsersForm from "./form";
+
+import CloseForm from "./closeForm";
 
 const Users = () => {
+  const [isActiveForm, setActiveForm] = React.useState(true);
+  const getActiveForm = () => {
+    setActiveForm(!isActiveForm);
+  };
   return (
-    <UsersFormStyled>
-      <AddUsers />
-      <TableUsers />
-    </UsersFormStyled>
+    <>
+      <CloseForm onClick={getActiveForm} isActiveForm={isActiveForm} />
+      <UsersFormStyled>
+        <AddUsersForm isActiveForm={isActiveForm} />
+        <TableUsers />
+      </UsersFormStyled>
+    </>
   );
 };
 

@@ -6,7 +6,11 @@ import AddUsersStyle from "./styles";
 import Input from "./input";
 import Button from "./button";
 
-const AddUsers = () => {
+interface IProps {
+  isActiveForm: boolean;
+}
+
+const AddUsers = React.memo(({ isActiveForm }: IProps) => {
   const obj = {
     age: "",
     name: "",
@@ -63,8 +67,9 @@ const AddUsers = () => {
       }
     }
   };
+
   return (
-    <AddUsersStyle onSubmit={handleSubmit}>
+    <AddUsersStyle onSubmit={handleSubmit} isActiveForm={isActiveForm}>
       <Input
         onChange={handleChange("name")}
         value={state.name}
@@ -81,6 +86,6 @@ const AddUsers = () => {
       <Button />
     </AddUsersStyle>
   );
-};
+});
 
 export default AddUsers;

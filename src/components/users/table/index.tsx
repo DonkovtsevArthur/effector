@@ -2,11 +2,12 @@ import * as React from "react";
 import { useStore } from "~/utils/effector";
 import { asyncAction, $currentUser, $isLoading } from "./models";
 
-interface IProps {
-  name: string;
-  _id?: string;
-}
-const TableUsers = () => {
+import Ul from "./styles";
+
+import { IPropsList } from "./interface";
+import List from "./list";
+
+const TableUsers = React.memo(() => {
   const user = useStore($currentUser);
   const isLoading: boolean = useStore($isLoading);
 
@@ -22,12 +23,12 @@ const TableUsers = () => {
   }
 
   return (
-    <ul>
-      {user.map((el: IProps) => (
-        <li key={el._id + el.name}>{el.name}</li>
+    <Ul>
+      {user.map((el: IPropsList) => (
+        <List el={el} key={el._id + el.name} />
       ))}
-    </ul>
+    </Ul>
   );
-};
+});
 
 export default TableUsers;
